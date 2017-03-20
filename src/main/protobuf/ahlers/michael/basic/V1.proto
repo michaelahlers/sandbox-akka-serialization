@@ -1,0 +1,18 @@
+syntax = "proto3";
+package ahlers.michael.basic;
+
+import "google/protobuf/wrappers.proto";
+
+option java_package = "ahlers.michael.basic";
+
+message Command {
+  string data = 1;
+}
+
+message Event {
+  string data = 1;
+}
+
+message State {
+  repeated string datas = 1;
+}
