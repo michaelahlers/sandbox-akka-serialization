@@ -10,7 +10,7 @@ import org.scalatest.{BeforeAndAfterAll, FlatSpecLike, Matchers}
 /**
  * @author <a href="mailto:michael@ahlers.consulting">Michael Ahlers</a>
  */
-class BasicActorSpec extends TestKit(ActorSystem(classOf[BasicActorSpec].getSimpleName)) with ImplicitSender
+class BasicActorSpec extends TestKit(ActorSystem()) with ImplicitSender
   with FlatSpecLike with Matchers with BeforeAndAfterAll {
 
   override def afterAll {
@@ -20,7 +20,9 @@ class BasicActorSpec extends TestKit(ActorSystem(classOf[BasicActorSpec].getSimp
 
   val id = randomUUID
 
-  val datas = "foo" :: "bear" :: Nil
+  val datas = "foo" :: "bear" :: Nil map {
+    _.getBytes.toSeq
+  }
 
   it must "accept commands" in {
     val actor = system.actorOf(BasicActor.props(id))

@@ -14,11 +14,11 @@ object BasicActor {
 
   case object Fetch extends Message
 
-  case class Command(data: String) extends Message
+  case class Command(data: Seq[Byte]) extends Message
 
-  case class Event(data: String) extends Message
+  case class Event(data: Seq[Byte]) extends Message
 
-  case class State(datas: List[String] = Nil) {
+  case class State(datas: List[Seq[Byte]] = Nil) {
     def updated(event: Event): State = copy(datas :+ event.data)
   }
 

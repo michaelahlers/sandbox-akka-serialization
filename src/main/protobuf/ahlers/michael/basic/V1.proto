@@ -1,5 +1,5 @@
 syntax = "proto3";
-package ahlers.michael.basic;
+package ahlers.michael.basic.v1;
 
 import "google/protobuf/wrappers.proto";
 
